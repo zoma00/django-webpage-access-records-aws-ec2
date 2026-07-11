@@ -1,0 +1,136 @@
+
+1- users 
+Hazem is a part of a admin group and has admin access permissions
+to go into the IAM console, so now I'm using my user,
+I can see my user Stephane,
+So my user Stephane has permission to do anything
+
+-going to the groups admins 
+-then I'm going to remove my user Stephane
+then Stephane loses its permissions on the right-hand side. (Check the private page mode)
+now I see zero users
+fix this:
+========
+now I see zero users
+users add permissions
+And so again, we could add the user back to a group.
+That's not what we want.
+Or we could attach policies directly to my user.
+to be IAMReadOnlyAccess.
+So this will allow my user Stephane
+to read anything on IAM
+So back in here, let's refresh this page.
+
+I can finally do my API call again and look at the Stephane user in my users category.
+
+So I can view users, I can view user groups, such as admin
+
+but can I create a group?
+developer 
+And as you can see, I cannot create it
+Because policy is read only
+
+====================================
+So next, let's do something.
+So next, I'm going to go into the left-hand side
+under user groups, and I'm going to create a group.
+under user groups, and I'm going to create a group.
+So this group is going to be called developers.
+And then I'm going to add the user Stephane in this group
+and I'm going to attach whatever policy I can find,
+for example, AlexaForBusiness
+And finally, let's go into the admin group.
+And again, we're going to add users
+and re-add Stephane into this group.
+So now if we go back to the Stephane user, so let's go
+into IAM and look at the users and look at Stephane,
+we have three permission policies attached to my user.
+We have the administrator access that has been inherited
+from the group admin.
+We have this AlexaForBusiness managed policy
+that has been attached via the group developers.
+And finally, IAMReadOnlyAccess
+I inherited different permissions based
+on how it's been attached.
+============================
+
+So now let's look at policies in detail.
+polices:
+at this AdministratorAccess policy.
+So if we look at it, it's the permission
+that gave us administrator access to everything.
+in this policy as a summary, as you can see,
+this allows all the services in AWS.
+
+So how is this permission defined?
+permission is defined in:
+Well, if you click on JSON,
+this is the JSON form of this policy, and we can see
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",        (ex ----> Any action
+            "Resource": "*"
+        }
+    ]
+}
+
+that here we have allow Action, star and resource, star.
+that here we have allow Action, star and resource, star.
+So star in AWS means anything.
+So it means we allow any action on any resource.
+as giving administrator access to someone.
+
+that IAM is authorized with Full: List and Limited: Read.
+
+And if I click on it, you can actually have a look
+at all the API calls that has been allowed
+
+defined:
+let's click on JSON.
+
+for read only policy:
+"iam:Get*"
+
+Create your own policy:
+=========================
+and we have a visual editor or a JSON editor.
+So if you have JSON, you can just very simply edit this
+and create your JSON document with this builder,
+list on the right.
+
+Or you can use the visual editor.
+ go to iam
+ list authorized
+ authorize:
+ Well, we want to authorize ListUsers.
+and getuser
+just 2 api calls
+And as we can see, we have selected one out of 38 in list,
+and one out of 32 in read.
+
+And then what do we want to authorize this on?
+choice:
+So on all resources or only specific resources?
+So on all resources or only specific resources?
+chek all resources .
+click next
+you can have a look and Create your permissons MyIAMPermissions.
+then click create policy
+then to clean up go to user group and delete develper group cause we don't need it.
+- And then I'm going to go into my Stephane user
+and I'm going to just remove this IAMReadOnlyAccess
+that had attached directly.
+
+So now Stephane only belongs to the group admin
+go back to to my IAM console in here and I just look at users,
+to my IAM console in here and I just look at users,
+as you can see, yes, everything is showing fine.
+
+
+
+
+
+

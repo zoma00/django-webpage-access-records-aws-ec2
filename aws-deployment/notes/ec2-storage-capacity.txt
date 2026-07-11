@@ -1,0 +1,42 @@
+The information you provided shows the current storage configuration for your EC2 instance. Here's a breakdown:
+
+- **Storage:** 1 GiB
+- **Volume Type:** gp3 (General Purpose SSD)
+- **Root Volume:** This is the main storage where your operating system and application files reside.
+- **Encryption:** Not encrypted
+
+**Since you're on the free tier, it seems you're using the minimum storage allocation (30 GB) for the root volume.** This might be sufficient for a small Django application during development. However, if you plan to:
+
+- **Store user data:** You'll likely need additional storage for user-generated content (e.g., uploads, databases).
+- **Scale your application:** Extra storage might be needed as your application grows in complexity and user base.
+
+Here's how you can configure storage for your EC2 instance:
+
+**1. Add New Volume:**
+
+- Click on "Add new volume" to add additional storage for your Django application.
+- You can choose the size, type (gp2 for HDD, gp3 for SSD), and IOPS (Input/Output Operations Per Second) based on your needs.
+- For a Django application, gp3 (SSD) is recommended for better performance.
+
+**2. Attach the Volume to the Instance:**
+
+- Once you've created a new volume, you'll need to attach it to your EC2 instance. This makes the additional storage accessible within the instance.
+- You can typically do this from the EC2 Management Console's "Actions" menu for the volume.
+
+**3. Format and Mount the Volume (on the Instance):**
+
+- Connect to your EC2 instance (using SSH if you've set up key pairs).
+- You'll need to format the newly attached volume using file system tools like `mkfs.ext4`.
+- Then, mount the formatted volume to a specific directory on your instance using the `mount` command.
+
+**4. Manage Storage in Your Application:**
+
+- Configure your Django application settings to use the newly mounted directory for storing data (e.g., media files, databases).
+
+**Additional Tips:**
+
+- Consider using Amazon EBS snapshots for backing up your storage volumes regularly. This allows you to recover data in case of failures.
+- If you anticipate frequent data access, choose an appropriate IOPS level for your storage volume.
+- Explore EBS-optimized instances for better storage performance if needed.
+
+Remember to refer to the AWS documentation for detailed instructions on adding, attaching, and managing storage volumes within your EC2 instance.

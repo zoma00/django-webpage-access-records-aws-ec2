@@ -1,0 +1,119 @@
+** i have aws root account and IAM USER account on a free teair basis and i want to upload a Django project named web access record on EC2. Can you help me with that task?
+
+
+I'd be glad to guide you through deploying your Django project named "web access record" to an Amazon EC2 instance, but it's strongly recommended to **avoid using the AWS root account for everyday tasks**. Here's a secure approach using an IAM user:
+
+**Prerequisites:**
+
+- An AWS account (free tier is sufficient for learning purposes).
+- A Django project named "web access record" ready for deployment.
+- Basic understanding of Python and command-line tools.
+
+
+
+**Steps:**
+============
+
+1. **Create an IAM User (if you haven't already):**
+
+   - Log in to the AWS Management Console ([https://aws.amazon.com/console/](https://aws.amazon.com/console/)).
+   - Go to the IAM service and click on "Users."
+   - Click on "Add user."
+
+   - Enter a username (e.g., `django_deployer`) and select "Programmatic access."
+   - Choose appropriate permissions (search for "AmazonEC2FullAccess" and "AmazonS3FullAccess" for the initial setup, but we'll refine these later for security).
+   - Click "Create user" and download the credentials (access key ID and secret access key). Keep these credentials secure as they provide access to your AWS resources.
+
+
+
+
+
+===========================
+** Pairing using aws gui:
+==========================
+
+
+
+Key pair name
+Key pairs allow you to connect to your instance securely.
+django_deployment_key
+The name can include up to 255 ASCII characters. It can't include leading or trailing spaces.
+
+Key pair type
+RSA #
+RSA encrypted private and public key pair
+
+ED25519 x
+ED25519 encrypted private and public key pair (Not supported for Windows instances)
+Private key file format
+
+
+
+
+
+
+Key format selection:
+=======================================================================
+.pem # (use it more simple since you have installed aws v2.17 latest) |
+For use with OpenSSH 												  |===================
+=======================================================================
+
+
+
+
+
+
+
+.ppk   
+For use with PuTTY
+
+When prompted, store the private key in a secure and accessible location on your computer. You will need it later to connect to your instance. Learn more 
+Cancel
+Create key pair
+
+
+-Downlaoded file in my proenv directory.
+
+- used my current requirement text.
+curcial to include Gunicorn library in your req project for deployment.
+-removed json file.
+-prepopulated data-base
+- checking setting file for signal to your data-base.
+- 
+
+
+EC2
+Instances
+i-082ffb6c3ae4b6bbb
+Connect to instance
+Connect to instance Info
+Connect to your instance i-082ffb6c3ae4b6bbb (Web-access-records) using any of these options
+
+
+EC2 Instance Connect
+
+Session Manager
+
+SSH client
+
+EC2 serial console
+Instance ID
+
+i-082ffb6c3ae4b6bbb (Web-access-records)
+Connection Type
+Connect using EC2 Instance Connect
+Connect using the EC2 Instance Connect browser-based client, with a public IPv4 address.
+Connect using EC2 Instance Connect Endpoint
+Connect using the EC2 Instance Connect browser-based client, with a private IPv4 address and a VPC endpoint.
+Public IP address
+
+13.53.86.62
+Username
+Enter the username defined in the AMI used to launch the instance. If you didn't define a custom username, use the default username, ubuntu.
+ubuntu
+
+Note: In most cases, the default username, ubuntu, is correct. However, read your AMI usage instructions to check if the AMI owner has changed the default AMI username.
+
+
+
+

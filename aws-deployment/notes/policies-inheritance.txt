@@ -1,0 +1,6 @@
+IAM polices inheretence:
+
+- if a member shared many groups he will inherent sharing polices in different groups.
+
+
+

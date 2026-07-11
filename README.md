@@ -27,6 +27,19 @@ Categories for webpages (e.g., Search, Social, Marketplace, News, Games)
 A set of fake users (optional, depending on your Django model setup)
 
 
+## ☁️ AWS EC2 Deployment
+
+This project was deployed to **AWS EC2** as a self-directed learning exercise on
+a free-tier account — **not client work**. All resources were **terminated** and
+all credentials **revoked** afterward (instance terminated, SSH key pair deleted,
+IAM access keys revoked, and the account's payment method has since changed).
+
+See **[aws-deployment/](aws-deployment/README.md)** for the full write-up — IAM
+users/roles and policies, EC2 provisioning, network/security-group settings,
+Gunicorn, and secure SSH / SSM Session Manager access — with redacted
+screenshots and deployment notes.
+
+
 Prerequisites:
 
 - Python 3 (tested with 3. x versions)

@@ -1,0 +1,18 @@
+Out of the libraries you mentioned, only **gunicorn** is essential for deployment on AWS with a Django application. Here's a breakdown of their purposes and deployment needs:
+
+- **gunicorn (required):** This is a WSGI (Web Server Gateway Interface) server that allows you to run your Django application as a production web server. It's necessary for handling web requests and serving your application on AWS.
+
+- **whitenoise (optional):** This library helps serve static files (like CSS, JavaScript, images) efficiently. It's particularly useful when deploying to platforms like Heroku, which don't have built-in static file serving. However, on AWS, you can configure your web server (like Apache or Nginx) to handle static files directly, making whitenoise optional.
+
+- **dj-database-url (optional):** This library helps manage database connection settings based on environment variables. It can be useful for development or Heroku deployments where the database connection details might be different. But on AWS, you can manage database connections within your Django settings.py file or use other configuration management tools, making dj-database-url optional.
+
+- **Brotli (optional):** This library provides Brotli compression, which can improve website loading speed. It can be beneficial for both Heroku and AWS deployments, but it's not strictly necessary for basic functionality.
+
+**Here's a summary:**
+
+* **Required for AWS:** gunicorn
+* **Optional for AWS:** whitenoise, dj-database-url, Brotli
+
+**Recommendation:**
+
+For your demo, you can include all the libraries you mentioned in your `requirements.txt`. It ensures your application functions similarly to how it did on Heroku. However, for a more optimized deployment on AWS, consider keeping only gunicorn in your `requirements.txt` and configure static file serving and database connection settings separately on your EC2 instance. This reduces the number of dependencies needed and potentially improves deployment efficiency.
