@@ -1,10 +1,7 @@
-<div>
-
-<p align="center">
-  <a href="https://docs.djangoproject.com/en/5.2/" target="_blank">
-    <img src="https://www.djangoproject.com/m/img/logos/django-logo-negative.svg" width="400" alt="Django Logo">
-  </a>
-</div>
+![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
+![Faker](https://img.shields.io/badge/Faker-FF6B6B)
 
 
 Project Name: (Webpages Database Access Records)
@@ -33,6 +30,9 @@ This project was deployed to **AWS EC2** as a self-directed learning exercise on
 a free-tier account — **not client work**. All resources were **terminated** and
 all credentials **revoked** afterward (instance terminated, SSH key pair deleted,
 IAM access keys revoked, and the account's payment method has since changed).
+
+![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?logo=amazonec2&logoColor=white)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?logo=gunicorn&logoColor=white)
 
 See **[aws-deployment/](aws-deployment/README.md)** for the full write-up — IAM
 users/roles and policies, EC2 provisioning, network/security-group settings,
