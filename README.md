@@ -23,10 +23,11 @@ Categories for webpages (e.g., Search, Social, Marketplace, News, Games)
 - Custom Users:
 A set of fake users (optional, depending on your Django model setup)
 
-![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?logo=amazonec2&logoColor=white)
-![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?logo=gunicorn&logoColor=white)
+
 
 ## ☁️ AWS EC2 Deployment
+![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?logo=amazonec2&logoColor=white)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?logo=gunicorn&logoColor=white)
 
 This project was deployed to **AWS EC2** as a self-directed learning exercise on
 a free-tier account — **not client work**. All resources were **terminated** and
