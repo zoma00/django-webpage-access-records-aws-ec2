@@ -23,6 +23,8 @@ Categories for webpages (e.g., Search, Social, Marketplace, News, Games)
 - Custom Users:
 A set of fake users (optional, depending on your Django model setup)
 
+![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?logo=amazonec2&logoColor=white)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?logo=gunicorn&logoColor=white)
 
 ## ☁️ AWS EC2 Deployment
 
@@ -31,8 +33,7 @@ a free-tier account — **not client work**. All resources were **terminated** a
 all credentials **revoked** afterward (instance terminated, SSH key pair deleted,
 IAM access keys revoked, and the account's payment method has since changed).
 
-![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?logo=amazonec2&logoColor=white)
-![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?logo=gunicorn&logoColor=white)
+
 
 See **[aws-deployment/](aws-deployment/README.md)** for the full write-up — IAM
 users/roles and policies, EC2 provisioning, network/security-group settings,
