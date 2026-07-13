@@ -1,29 +1,19 @@
+[![CI](https://github.com/zoma00/django-webpage-access-records-aws-ec2/actions/workflows/ci.yml/badge.svg)](https://github.com/zoma00/django-webpage-access-records-aws-ec2/actions/workflows/ci.yml)
 ![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
 ![Faker](https://img.shields.io/badge/Faker-FF6B6B)
 
 
-Project Name: (Webpages Database Access Records)
+# Webpages Database Access Records
 
-Description:
+A Django 5.2 application for organizing webpages by topic and recording which users accessed
+them. The included Faker-based population script creates:
 
-This Python script populates a Django database with sample data for a website that might categorize web pages under various topics. It creates:
-
-- Topics: 
-
-Categories for webpages (e.g., Search, Social, Marketplace, News, Games)
-- Webpages:
-
- Sample webpages with randomly generated URLs, names, and associated topics
-
-- Access Records:
- Simulates user interactions with the webpages (date and user who accessed the webpage)
-
-- Custom Users:
-A set of fake users (optional, depending on your Django model setup)
-
-
+- Topic categories such as Search, Social, Marketplace, News, and Games
+- Webpages with generated names and URLs
+- Custom users
+- Dated access records linking users to webpages
 
 ## ☁️ AWS EC2 Deployment
 ![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?logo=amazonec2&logoColor=white)
@@ -42,13 +32,12 @@ Gunicorn, and secure SSH / SSM Session Manager access — with redacted
 screenshots and deployment notes.
 
 
-Prerequisites:
+## Prerequisites
 
-- Python 3 (tested with 3. x versions)
-- Django framework (installation instructions: [https://docs.djangoproject.com/en/4.2/intro/install/](https://docs.djangoproject.com/en/4.2/intro/install/))
-- `faker` library (`pip install faker`)
+- Python 3.11 or newer
+- Django 5.2
 
-Installation:
+## Installation
 
 1. Clone or download the repository.
 2. Create a virtual environment (recommended):
@@ -61,86 +50,61 @@ Installation:
 3. Install required dependencies:
 
    ```bash
-   pip install -r requirements.txt 
+   cd first_pro
+   pip install -r requirements.txt
    ```
-4. Copy your Django project's `settings.py` file to the root of this script's directory (modify `DJANGO_SETTINGS_MODULE` accordingly).
+4. Set local environment values and create the database:
 
-Usage:
-
-1. Open a terminal or command prompt and navigate to the script's directory.
-2. Run the script:
    ```bash
-   python populate.py
+   export DJANGO_SECRET_KEY="replace-with-a-local-development-key"
+   export DJANGO_DEBUG=True
+   export DJANGO_ALLOWED_HOSTS="localhost,127.0.0.1"
+   python manage.py migrate
    ```
-   This will generate and populate the sample data.
 
-Configuration (Optional):
+## Usage
 
-- The script populates `N=5` topics and webpages by default. You can modify the value of `N` in the `populate` function to create a different number of entries.
-- To include fake user generation and association with Access Records, uncomment the `create_fake_users` and user-related lines within the `populate` function.
+Generate sample data and start the development server:
 
-- Consider adding a `requirements.txt` file to list dependencies for easier installation using `pip install -r requirements.txt`.
+```bash
+python populate.py
+python manage.py runserver
+```
 
-Further Customization:
+## Configuration
+
+- The script populates `N=5` topics and webpages by default. Modify `N` in `populate()` to
+  create a different number of entries.
+- `DJANGO_SECRET_KEY`, `DJANGO_DEBUG`, and `DJANGO_ALLOWED_HOSTS` control environment-specific Django settings.
+
+## Further Customization
 
 - You can modify the `topics` list to reflect the specific categories relevant to your website.
-- The script can be extended to generate more complex data or integrate with your Django models  if needed.
+- The script can be extended to generate more complex data or integrate with additional Django
+  models.
 
-Testing:
+## Testing and CI
 
-- Ensure Django is running with your project's settings.
-- Run the script and verify the generated data in your Django admin interface or database.
+From the repository root, run the same checks used by GitHub Actions:
 
-License:
+```bash
+python -m pip install -r requirements-ci.txt
+ruff check first_pro
+cd first_pro
+python manage.py check
+python manage.py makemigrations --check --dry-run
+python manage.py test -v 2
+```
 
-(MIT License).
+The test suite creates a temporary database, applies every migration, and verifies custom-user,
+model, relationship, cascade, ordering, view, and empty-state behavior. No AWS resources are
+required.
 
-Contributing:
+## License
 
-(Provide instructions on how others can contribute to your project, if applicable).
+[MIT](LICENSE)
 
-Readme.md:
-
-Project Name**
-
-**Introduction:**
-
-A Python script for populating a Django database with sample data for a website  categorizes web pages.
-
-Features:
-
-- Generates topics (categories)
-- Creates webpages with random URLs, names, and associations with topics
-- Simulates user interactions with webpages (Access Records)
-- Optionally generates fake users (if your Django model setup includes users)
-
-Installation:
-
-(Refer to the Installation section in the documentation)
-
-Usage:
-
-(Refer to the Usage section in the documentation)
-
-Configuration:
-
-(Refer to the Configuration section in the documentation)
-
-Further Customization:
-
-(Refer to the Further Customization section in the documentation)
-
-Testing:
-
-(Refer to the Testing section in the documentation)
-
-License:
-
-(Specify your preferred license)
-
-Contributing:
-
-## Contributing to (Webpages Database Access Records)
+## Contributing to Webpages Database Access Records
 
 We welcome contributions from the community! Here's how you can get involved:
 
@@ -177,4 +141,4 @@ Additional Notes:
 - We appreciate contributions that are respectful and professional.
 - We reserve the right to review and approve all contributions before merging them into the main codebase.
 
-Thanks for your interest in contributing to (Webpages Database Access Records)!
+Thanks for your interest in contributing to Webpages Database Access Records!
