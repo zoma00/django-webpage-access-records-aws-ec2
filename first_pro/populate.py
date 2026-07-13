@@ -1,14 +1,15 @@
 import os
+import random
+
+from faker import Faker
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'first_pro.settings')
 import django
-from django.conf import settings
 
 django.setup()
 
 from first_app.models import Topic, WebPage, AccessRecord
-from faker import Faker
-import random
-from accounts.models import CustomUser  # Import the CustomUser model directly
+from accounts.models import CustomUser
 
 fakegen = Faker()
 
@@ -45,11 +46,10 @@ def populate(N=5):
         webpg, _ = WebPage.objects.get_or_create(topic=top, url=fake_url, name=fake_name)
 
         user = get_random_user(users)
-        acc_rec = AccessRecord.objects.create(name=webpg, date=fake_date, user=user) #instace acc_rec
+        AccessRecord.objects.create(name=webpg, date=fake_date, user=user)
 
 if __name__ == '__main__':
     print("Populating script!")
     populate(N=20)  # Adjust N for desired number of users
     print("Populating complete")
-
 

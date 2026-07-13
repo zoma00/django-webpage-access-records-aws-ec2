@@ -1,6 +1,5 @@
 from django.db import models
-from django.conf import settings
-from accounts.models import CustomUser 
+from accounts.models import CustomUser
 
 class Topic(models.Model):
     top_name = models.CharField(max_length=264, unique=True)
@@ -19,10 +18,9 @@ class WebPage(models.Model):
 class AccessRecord(models.Model):
     name = models.ForeignKey(WebPage, on_delete=models.CASCADE)
     date = models.DateField()
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Update the reference to AUTH_USER_MODEL
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.user} accessed {self.name} on {self.date}"
 
         
-
