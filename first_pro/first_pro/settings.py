@@ -22,13 +22,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7^hc1by0a@64v#wf!@_o*rspvda%sa4qrdwz)(6*zhaajil%)$'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['16.171.206.215']
+# Environment-driven settings keep deployment credentials and hostnames out of source control.
+SECRET_KEY = os.getenv(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-development-only-change-me',
+)
+DEBUG = os.getenv('DJANGO_DEBUG', 'False').lower() in {'1', 'true', 'yes'}
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost,testserver').split(',')
+    if host.strip()
+]
 
 
 # Application definition
@@ -44,6 +48,8 @@ INSTALLED_APPS = [
     'first_app',
     
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
@@ -136,4 +142,3 @@ STATICFILES_DIRS = [
 #DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #MIGRATION_MODULES = {'first_app': 'first_app.migrations'}  # Comment out this line
-
